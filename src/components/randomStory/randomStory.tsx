@@ -42,7 +42,9 @@ const RandomStory = () => {
 
 	return (
 		<div className='Story'>
-			<h1>{selectedStory.title}</h1>
+			<h1>
+				<Story text={selectedStory.title} />
+			</h1>
 			<Story text={selectedStory.body} />
 		</div>
 	);
