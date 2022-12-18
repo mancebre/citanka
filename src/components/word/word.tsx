@@ -74,50 +74,51 @@ const znakovi = ['.', ',', ';', ':', '-', '?', '!'];
 const r = 'р';
 
 const Word = ({ word }: Props) => {
-	if (word.trim().length < 4) {
-		return <>{word} </>;
-	}
-
-	let result: String[] = [];
-	let resultKey: number = 0;
-	const characters = word.trim().split('');
-	// console.log('RENDER - Word');
-
-	// Lomi na R ako je:
-	// Na pocetku reci Ispred suglasnika
-	if (characters[0] === r && suglasnici.includes(characters[1])) {
-		// Dodaj pauzu posle R.
-		resultKey++;
-		result[resultKey] = '';
-	}
-
-	result[resultKey] = '';
-	for (const key in characters) {
-		result[resultKey] += characters[key];
-		if (
-			parseInt(key) + 1 === word.trim().length ||
-			typeof characters[parseInt(key) + 2] === 'undefined' ||
-			znakovi.includes(characters[parseInt(key) + 2])
-		) {
-			continue;
+	const breakeWord = (word: String): String[] => {
+		if (word.trim().length < 4) {
+			return [word];
 		}
 
-		//R izmedju dva suglasnika
-		if (
-			characters[key] === r &&
-			suglasnici.includes(characters[parseInt(key) - 1]) &&
-			suglasnici.includes(characters[parseInt(key) + 1])
-		) {
+		let result: String[] = [];
+		let resultKey: number = 0;
+		const characters = word.trim().split('');
+
+		// Lomi na R ako je:
+		// Na pocetku reci Ispred suglasnika
+		if (characters[0] === r && suglasnici.includes(characters[1])) {
 			// Dodaj pauzu posle R.
 			resultKey++;
 			result[resultKey] = '';
 		}
-		if (samoglasnici.includes(characters[key])) {
-			resultKey++;
-			result[resultKey] = '';
+
+		result[resultKey] = '';
+		for (const key in characters) {
+			result[resultKey] += characters[key];
+			if (
+				parseInt(key) + 1 === word.trim().length ||
+				typeof characters[parseInt(key) + 2] === 'undefined' ||
+				znakovi.includes(characters[parseInt(key) + 2])
+			) {
+				continue;
+			}
+
+			//R izmedju dva suglasnika
+			if (
+				characters[key] === r &&
+				suglasnici.includes(characters[parseInt(key) - 1]) &&
+				suglasnici.includes(characters[parseInt(key) + 1])
+			) {
+				// Dodaj pauzu posle R.
+				resultKey++;
+				result[resultKey] = '';
+			}
+			if (samoglasnici.includes(characters[key])) {
+				resultKey++;
+				result[resultKey] = '';
+			}
 		}
-	}
-	// console.log(result);
+		return result;
+	};
 
 	const getClass = (key: number): string => {
 		if (key % 2 === 0) {
@@ -127,6 +128,27 @@ const Word = ({ word }: Props) => {
 		}
 	};
 
+	let result: String[];
+
+	// NAJ pravilo
+	if (
+		word.startsWith('нај') ||
+		word.startsWith('Нај') ||
+		word.startsWith('НАЈ')
+	) {
+		const naj: string = word.substring(0, 3);
+		const newWord: string = word.substring(3);
+		const newWordBroken: String[] = breakeWord(newWord);
+		if (Array.isArray(newWordBroken)) {
+			result = [naj, ...newWordBroken];
+		} else {
+			result = [naj, newWord];
+		}
+	} else {
+		result = breakeWord(word);
+	}
+
+	// console.log('RENDER - Word');
 	return (
 		<>
 			{result.map((slog, key) => (
