@@ -1,0 +1,17 @@
+.Story {
+	margin: auto;
+	width: 70%;
+	padding: 20px;
+	font-size: 22px;
+	background-color: #e0c9a6;
+	/* color: rgb(76, 0, 255); */
+}
+@media all and (max-width: 750px) {
+	/* CSS rules here for screens lower than 750px */
+	.Story {
+		width: auto;
+	}
+}
+@media all and (min-width: 750px) {
+	/* CSS rules here for screens above 750px */
+}
