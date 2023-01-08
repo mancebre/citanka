@@ -1,26 +1,30 @@
 import React from 'react';
-import StoryLine from '../storyLine/storyLine';
+import ProcessText from '../processText/processText';
+import './story.css';
+
+type StoryType = {
+	title: String;
+	body: String;
+};
 
 interface Props {
-	text: String;
+	story: StoryType;
+	clicked: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const Story = ({ text }: Props) => {
-	const breakeLines = (storyBody: String): String[] => {
-		const bodyArr = storyBody.split(/\n/);
-		return bodyArr;
-	};
-
-	const textArr = breakeLines(text);
-
+const Story = ({ story, clicked }: Props) => {
 	// console.log('RENDER - Story');
 
 	return (
-		<div>
-			{textArr.map((line, row) => (
-				<StoryLine line={line} key={row} />
-			))}
-		</div>
+		<>
+			<h1>
+				<ProcessText text={story.title} />
+			</h1>
+			<ProcessText text={story.body} />
+			<button className='Button' onClick={clicked}>
+				СЛЕДЕЋА ПРИЧА
+			</button>
+		</>
 	);
 };
 
