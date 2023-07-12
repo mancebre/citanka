@@ -2,26 +2,24 @@ import React from 'react';
 import StoryLine from '../storyLine/storyLine';
 
 interface Props {
-	text: String;
+  text: string;
 }
 
 const ProcessText = ({ text }: Props) => {
-	const breakeLines = (storyBody: String): String[] => {
-		const bodyArr = storyBody.split(/\n/);
-		return bodyArr;
-	};
+  const breakLines = (storyBody: string): string[] => {
+    const bodyArr = storyBody.split(/\n/);
+    return bodyArr;
+  };
 
-	const textArr = breakeLines(text);
+  const textArr = breakLines(text);
 
-	// console.log('RENDER - Story');
-
-	return (
-		<div>
-			{textArr.map((line, row) => (
-				<StoryLine line={line} key={row} />
-			))}
-		</div>
-	);
+  return (
+    <div>
+      {textArr.map((line, index) => (
+        <StoryLine line={line} key={index} />
+      ))}
+    </div>
+  );
 };
 
 export default ProcessText;
