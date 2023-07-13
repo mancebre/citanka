@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import StoryLine from './storyLine';
+import StoryLine from './StoryLine';
 
 describe('StoryLine', () => {
   test('renders line with words', () => {

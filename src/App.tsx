@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import RandomStory from './components/randomStory/randomStory';
+import RandomStory from './components/RandomStory/RandomStory';
 
 function App() {
 	return (

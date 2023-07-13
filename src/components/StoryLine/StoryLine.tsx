@@ -1,6 +1,6 @@
 import React from 'react';
-import './storyLine.css';
-import Word from '../word/word';
+import './StoryLine.css';
+import Word from '../Word/Word';
 
 interface Props {
   line: string;

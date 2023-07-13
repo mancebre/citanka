@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import ProcessText from './processText';
+import ProcessText from './ProcessText';
 
 test('renders the processed text correctly', () => {
   const text = 'This is a test text';

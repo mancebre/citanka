@@ -1,5 +1,5 @@
 import React from 'react';
-import StoryLine from '../storyLine/storyLine';
+import StoryLine from '../StoryLine/StoryLine';
 
 interface Props {
   text: string;
@@ -7,8 +7,7 @@ interface Props {
 
 const ProcessText = ({ text }: Props) => {
   const breakLines = (storyBody: string): string[] => {
-    const bodyArr = storyBody.split(/\n/);
-    return bodyArr;
+    return storyBody.split(/\n/);
   };
 
   const textArr = breakLines(text);

@@ -1,6 +1,6 @@
 import React from 'react';
-import ProcessText from '../processText/processText';
-import './story.css';
+import ProcessText from '../ProcessText/ProcessText';
+import './Story.css';
 
 type StoryType = {
   title: string;

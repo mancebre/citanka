@@ -1,5 +1,5 @@
 import React from 'react';
-import './word.css';
+import './Word.css';
 
 interface Props {
   word: string;

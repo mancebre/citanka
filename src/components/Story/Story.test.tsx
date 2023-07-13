@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Story from './story';
+import Story from './Story';
 
 describe('Story', () => {
   const mockStory = {
@@ -9,7 +9,7 @@ describe('Story', () => {
   };
   const mockClicked = jest.fn();
 
-  test('renders story title and body', () => {
+  test('renders Story title and body', () => {
     render(<Story story={mockStory} clicked={mockClicked} />);
     const titleElement = screen.getByTestId('story-title');
     const bodyElement = screen.getByTestId('story-body');

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './randomStory.css';
+import './RandomStory.css';
 import {
   careveUsi,
   kisa,
@@ -13,8 +13,8 @@ import {
   vevericaIpcela,
   zlatokosaItriMedveda,
 } from '../../data/stories';
-import Story from '../story/story';
-import ProcessText from '../processText/processText';
+import Story from '../Story/Story';
+import ProcessText from '../ProcessText/ProcessText';
 
 type StoryType = {
   title: string;
