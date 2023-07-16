@@ -13,6 +13,11 @@ const PlainTextConvert: React.FC = () => {
         setStoryWritingSystem(detectWritingSystem(text));
     };
 
+    const handleReset = () => {
+        setStoryText('');
+        setStoryWritingSystem('');
+    }
+
     let processedStory = <ProcessText text={storyText} />;
     if (storyWritingSystem !== 'Cyrillic' && storyText.length > 0) {
         processedStory = (
@@ -34,7 +39,7 @@ const PlainTextConvert: React.FC = () => {
                 <Typography variant="h3" align="center" gutterBottom>
                     Colored Overlays Convert
                 </Typography>
-                <SubmitText handleSubmit={handleSubmit} />
+                <SubmitText handleSubmit={handleSubmit} handleReset={handleReset} />
                 <Box mt={4}>{processedStory}</Box>
             </Container>
         </Box>

@@ -3,9 +3,10 @@ import { TextField, Button, Box, Typography } from '@mui/material';
 
 type SubmitTextProps = {
     handleSubmit: (text: string) => void;
+    handleReset: () => void;
 };
 
-const SubmitText: React.FC<SubmitTextProps> = ({ handleSubmit }) => {
+const SubmitText: React.FC<SubmitTextProps> = ({ handleSubmit, handleReset }) => {
     const [text, setText] = useState('');
 
     const handleTextAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -16,8 +17,9 @@ const SubmitText: React.FC<SubmitTextProps> = ({ handleSubmit }) => {
         handleSubmit(text);
     };
 
-    const handleReset = () => {
+    const handleResetClick = () => {
         setText('');
+        handleReset();
     };
 
     const characterCount = text.length;
@@ -48,7 +50,7 @@ const SubmitText: React.FC<SubmitTextProps> = ({ handleSubmit }) => {
                 <Typography variant="caption" style={counterStyle}>
                     {characterCount}/{maxLength}
                 </Typography>
-                <Button variant="outlined" onClick={handleReset}>
+                <Button variant="outlined" onClick={handleResetClick}>
                     Reset
                 </Button>
             </Box>
