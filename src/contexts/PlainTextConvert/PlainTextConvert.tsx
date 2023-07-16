@@ -3,6 +3,7 @@ import { Typography, Box, Container } from '@mui/material';
 import SubmitText from '../../components/SubmitText/SubmitText';
 import ProcessText from '../../components/ProcessText/ProcessText';
 import { detectWritingSystem } from '../../utils/utils';
+import SyllableBreaker from "../../services/SyllableBreaker";
 
 const PlainTextConvert: React.FC = () => {
     const [storyText, setStoryText] = useState('');
@@ -11,6 +12,9 @@ const PlainTextConvert: React.FC = () => {
     const handleSubmit = (text: string) => {
         setStoryText(text);
         setStoryWritingSystem(detectWritingSystem(text));
+        const syllableBreaker = new SyllableBreaker(text, 'Цареве Уши');
+        const syllables = syllableBreaker.getTextBody();
+        console.log(syllables);
     };
 
     const handleReset = () => {
