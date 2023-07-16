@@ -69,13 +69,13 @@ const RandomStory: React.FC<Props> = ({ 'data-testid': testId }) => { // Destruc
   }
 
   let content = (
-    <div className="RandomStory" data-testid={testId}> {/* Add the data-testid prop to the root div */}
+    <div className="RandomStory" data-testid={testId}>
       <Story story={selectedStory} clicked={handleNextStory} />
     </div>
   );
   if (allRead) {
     content = (
-      <div className="RandomStory" data-testid={testId}> {/* Add the data-testid prop to the root div */}
+      <div className="RandomStory" data-testid={testId}>
         <h2>
           <ProcessText text="Браво, прочитали сте све приче!" />
         </h2>

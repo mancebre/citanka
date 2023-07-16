@@ -2,17 +2,15 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ProcessText from './ProcessText';
 
-test('renders the processed text correctly', () => {
-  const text = 'This is a test text';
-  render(<ProcessText text={text} />);
-  
-  const words = text.split(' ');
-  const wordElements = screen.queryAllByTestId('word');
-  
-  expect(wordElements).toHaveLength(words.length);
-  
-  words.forEach((word, index) => {
-    const wordElement = wordElements[index];
-    expect(wordElement).toHaveTextContent(word);
+describe('ProcessText', () => {
+  it('breaks the text into lines correctly', () => {
+    const text = 'Line 1\nLine 2\nLine 3';
+    render(<ProcessText text={text} />);
+
+    const lineElements = screen.getAllByTestId('story-line');
+    expect(lineElements).toHaveLength(3);
+    expect(lineElements[0]).toHaveTextContent('Line 1');
+    expect(lineElements[1]).toHaveTextContent('Line 2');
+    expect(lineElements[2]).toHaveTextContent('Line 3');
   });
 });

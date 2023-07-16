@@ -15,7 +15,9 @@ const ProcessText = ({ text }: Props) => {
   return (
     <div>
       {textArr.map((line, index) => (
-        <StoryLine line={line} key={index} />
+          <div data-testid="story-line" key={index}>
+            <StoryLine line={line} />
+          </div>
       ))}
     </div>
   );
